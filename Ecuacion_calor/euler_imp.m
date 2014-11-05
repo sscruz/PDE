@@ -47,6 +47,8 @@ PlotU = [alpha(0);u0;beta(0)];
 
 plot(x,PlotU);
 
+
+%Resolucion para cada valor del tiempo
 for k=1:M,
   b = tau*fuente(xi,tau*k);
   b(1) = lambda*alpha(k*tau);

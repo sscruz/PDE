@@ -1,4 +1,4 @@
-% Resolucion del problema -u'' = f(x) (en x \in (extremoIzd, extremodrch))
+% Resolucion del problema a(x)*u''+b(x)*u'(x)+c(x)*u(x) = f(x) (en x \in (extremoIzd, extremodrch))
 % u(0) = alpha
 % u(1) = beta
 %

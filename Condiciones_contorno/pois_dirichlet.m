@@ -1,3 +1,9 @@
+%%%%%%%%%%%
+% Resolucion del problema u_xx + u_yy = f(x,y) en un cuadrado con vertices 
+% (a,b) -- (a+L,b) -- (a+L,b+L) -- (a,b+L)
+% y condiciones de contorno Dirichlet
+% N: tamano de la discretizacion
+
 %%%%%%%%%
 %%Datos%%
 %%%%%%%%%

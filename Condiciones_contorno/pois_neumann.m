@@ -1,3 +1,15 @@
+%%%%%%%%%%%
+% Resolucion del problema u_xx + u_yy = f(x,y) en un cuadrado con vertices 
+% (a,b) -- (a+L,b) -- (a+L,b+L) -- (a,b+L)
+% y condiciones de contorno mixtas
+% N: tamano de la discretizacion
+
+
+% Nota: se puede variar que condiciones son de tipo Dirichlet y cuales
+% Neumann comentando las lineas 47 a 61
+% qO, qN, qS, qE son las condiciones tipo Neumann para las fronteras
+% Oeste, Norte, Sur y Este.
+
 %%%%%%%%%
 %%Datos%%
 %%%%%%%%%
