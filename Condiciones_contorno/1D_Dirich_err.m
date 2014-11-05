@@ -1,10 +1,12 @@
 function error1()
-% Resolucion del problema -u'' = f(x) (en x \in (extremoIzd, extremodrch))
-% u(0) = alpha
-% u(1) = beta
+% Calculo del error del problema:
+% -u'' = f(x) (en x \in (extremoIzd, extremodrch))
+% u(extremoIzd) = alpha
+% u(extremodrch) = beta
 %
 % uExacta: solucion exacta al problema
-% N: numero de puntos interiores en la discretizacion 
+% Nvec: vector de numero de puntos en la discretizacion para los que
+% se calcula el error
 
 %%%%%%%%%%%%%%%%
 %%%% Datos: %%%%
