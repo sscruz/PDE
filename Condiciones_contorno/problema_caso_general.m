@@ -11,14 +11,14 @@
 	extremoIzd = 0;
 	extremoDrch = 1;
 	
-	alpha = 0;
-	beta = 0;
+	alpha = 1;
+	beta = 1;
 
-	uExacta = @(x) x.*sin(pi*x);
+	uExacta = @(x) exp(-5*x.*(1-x));
 	f = @(x) -2*pi*cos(pi*x) + pi*pi*x.*sin(pi*x);
-a = @(x) ;
-b = @(x) ;
-c = @(x) ;
+	a = @(x) 1+0*x;
+	b = @(x) 5*(2*x-1);
+	c = @(x) 10 + 0*x;
 
 	N = 200;
 

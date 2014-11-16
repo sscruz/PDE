@@ -51,8 +51,8 @@ plot(x,PlotU);
 %Resolucion para cada valor del tiempo
 for k=1:M,
   b = tau*fuente(xi,tau*k);
-  b(1) = lambda*alpha(k*tau);
-  b(end) = lambda*beta(k*tau);
+  b(1) += lambda*alpha(k*tau);
+  b(end) += lambda*beta(k*tau);
   
   b += AllU(:,k);
   AllU(:,k+1) = A\b;
