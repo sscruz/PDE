@@ -51,17 +51,17 @@ PlotU = [alpha(0);u0;beta(0)];
 
 plot(x,PlotU);
 
-b = tau*fuente(xi,0);
-b(1) = lambda*alpha(0);
-b(end) = lambda*beta(0);
+d = tau*fuente(xi,0);
+d(1) += lambda*alpha(0);
+d(end) += lambda*beta(0);
   
 %Resolucion para cada valor del tiempo
 for k=1:M,
-    b = [b,tau*fuente(xi,tau*k)];
-    b(1,k+1) = lambda*alpha(k*tau);
-    b(end,k+1) = lambda*beta(k*tau);
+    d = [d,tau*fuente(xi,tau*k)];
+    d(1,k+1) += lambda*alpha(k*tau);
+    d(end,k+1) += lambda*beta(k*tau);
   
-    c = theta*b(:,k+1)+(1-theta)*b(:,k) + B*AllU(:,k);
+    c = theta*d(:,k+1)+(1-theta)*d(:,k) + B*AllU(:,k);
     
     AllU(:,k+1) = A\c;
 
