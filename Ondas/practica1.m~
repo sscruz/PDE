@@ -1,0 +1,37 @@
+%
+
+
+
+%Datos
+a = 0;
+b = 1;
+c = 1;
+uInicial = @(x) x.*(L-x); % posicion inicial
+dInicial = @(x) 0*x; % velocidad inicial
+
+T = 2; % tiempo total
+N = 9; % numero de puntos en la discretizacion espacial
+M = 100;
+h = (b-a)/(N+1);
+x = (a:h:b)';
+xi = x(2:end-1);
+
+tau = T/M;
+
+lambda = c*tau/h;
+
+if (lambda < 1) 
+   printf("Metodo inestable");
+end
+
+A = sparse(1:N,1:N,2*(1-lambda*lambda),N,N);
+A += sparse(1:N-1,2:N,lambda*lambda,N,N)';
+A += sparse(1:N-1,2:N,lambda*lambda,N,N);
+
+uAproximada = uInicial(xi);
+uAproximada = [uAproximada, 0.5*A*uInicial(xi)+tau*dInicial(xi)];
+
+for k = 3:M,
+    uAproximada(:,k) = A*uAproximada(:,k-1) - uAproximada(:,k-2);
+    plot(x,[0;uAproximada(:,k);0]);
+end

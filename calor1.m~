@@ -1,0 +1,61 @@
+%% Resolucion numerica de la eq del calor
+%% u_t (x,t) -nu*u_xx(x,t) = f(x,t)
+%% u(
+
+
+%%%%%%%%%%%
+%% Datos %%
+%%%%%%%%%%%
+    
+a = 0;
+b = 1;
+T =1;
+
+uInicial = @(x) 4*(x-a).*(b-x);
+alpha = @(t) sin(4*pi*t);
+beta = @(t) 4*t.*(T-t);
+nu = 1;
+fuente = @(x,t) x.*t;
+
+
+
+N = 3;
+M = 10;
+
+%%%%%%%%%%%%%%
+%% Programa %%
+%%%%%%%%%%%%%%
+h = (b-a)/(N+1);
+tau = T/M;
+x = [a:h:b]';
+xi = x(2:N);
+
+
+
+
+lambda = tau*nu/(h*h);
+
+D = tridiag(N);
+A = speye(N) + D;
+
+u0 = uInicial(xi);
+AllU = u0;
+
+
+for k=1:M,
+b = tau*f(xi,tau*k);
+b(1) = lambda*alpha(k*tau);
+b(end) = lambda*beta(k*tau);
+
+b += u(:,k);
+u(:,k+1) = b/A;
+
+end
+
+
+
+
+%%%%%%%%%%%%
+%% Dibujo %%
+%%%%%%%%%%%%
+%waterfall
