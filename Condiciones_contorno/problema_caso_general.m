@@ -1,4 +1,4 @@
-% Resolucion del problema a(x)*u''+b(x)*u'(x)+c(x)*u(x) = f(x) (en x \in (extremoIzd, extremodrch))
+% Resolucion del problema -a(x)*u''+b(x)*u'(x)+c(x)*u(x) = f(x) (en x \in (extremoIzd, extremodrch))
 % u(0) = alpha
 % u(1) = beta
 %
@@ -15,12 +15,12 @@
 	beta = 1;
 
 	uExacta = @(x) exp(-5*x.*(1-x));
-	f = @(x) -2*pi*cos(pi*x) + pi*pi*x.*sin(pi*x);
+	f = @(x) 0*x;
 	a = @(x) 1+0*x;
 	b = @(x) 5*(2*x-1);
 	c = @(x) 10 + 0*x;
 
-	N = 200;
+	N = 9;
 
 	h = (extremoDrch - extremoIzd)/(N+1);
 	x = extremoIzd:h:extremoDrch;
@@ -35,11 +35,11 @@
 %%%%%%%%%%%%%%%%%%%
 
 	%Calculo de matrices y vectores
-        x1 = xi(2:N);
-        x2 = xi(1:N-1);
-	A = sparse(1:N-1,2:N,-a(x1)/(h*h)-b(x1)/(2*h),N,N)';
-        A += sparse(1:N-1,2:N,-(a(x2)/(h*h)-b(x2)/(2*h)),N,N);
-        A += sparse(1:N,1:N,2*a(xi)/(h*h)+c(x1),N,N);
+	
+	A =  sparse(1:N,1:N,2*a(x(2:end-1))/(h*h)+c(x(2:end-1)),N,N);
+	A += sparse(1:N-1,2:N,-a(x(3:end-1))/(h*h)-b(x(3:end-1))/(2*h),N,N)';
+        A += sparse(1:N-1,2:N,-a(x(2:end-2))/(h*h)+b(x(2:end-2))/(2*h),N,N);
+
 
         R = f(xi);
         R(1) = R(1) + a(xi(1))*alpha/(h*h) + b(xi(1))*alpha/(2*h);
@@ -48,7 +48,6 @@
 
 	% resolucion del problema
 	uAproximada = A\R;
-	
 	% calculo del error
 
 %%%%%%%%%%%%%%%%%%
